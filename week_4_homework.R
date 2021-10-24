@@ -24,3 +24,8 @@ biggest_critters
 ?tally
 where_are_NAs <- tally(surveys,is.na(weight))
 where_are_NAs
+
+surveys <- surveys %>% filter(!is.na(weight)) %>% group_by(species,sex) %>% mutate(avg_weight=mean(weight))
+surveys
+surveys_avg_weight<-select(surveys,species,sex,weight,avg_weight)
+surveys_avg_weight
