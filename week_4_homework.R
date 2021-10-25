@@ -22,9 +22,20 @@ biggest_critters <- surveys %>% group_by(species_id,sex) %>% summarize(min_weigh
 biggest_critters
 ?arrange
 ?tally
-where_are_NAs <- tally(surveys,is.na(weight))
+#Would be helpful to have more tally examples
+surveys<-read.csv("data/portal_data_joined.csv")
+head(surveys)
+where_are_NAs <- surveys %>% filter(is.na(weight)) %>% group_by(species) %>% tally()
 where_are_NAs
+#where_are_NAs <- surveys %>% filter(is.na(weight)) %>% group_by(species) %>% summarize(max_NAs_species = max(NAs))
+where_are_NAs <- surveys %>% filter(is.na(weight)) %>% group_by(genus) %>% tally()
+where_are_NAs
+where_are_NAs <- surveys %>% filter(is.na(weight)) %>% group_by(plot_type) %>% tally()
+where_are_NAs
+where_are_NAs <- surveys %>% filter(is.na(weight)) %>% group_by(plot_id) %>% tally()
+where_are_NAs %>% print(n=24)
 
+#Was very glad to have the answer key here. Was very close, but had things out of order
 surveys <- surveys %>% filter(!is.na(weight)) %>% group_by(species,sex) %>% mutate(avg_weight=mean(weight))
 surveys
 surveys_avg_weight<-select(surveys,species,sex,weight,avg_weight)
