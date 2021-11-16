@@ -24,7 +24,7 @@
 #surveys_wide$`Short-term Krat Exclosure`
 #surveys_wide$`Rodent Exclosure`
 
-#Attempt #2 with a bit of help from the answer key and the course materials.
+#Attempt #2, started fresh with a bit of help from the answer key and the course materials.
 
 library(tidyverse)
 surveys<-read.csv("data/portal_data_joined.csv")
@@ -35,7 +35,16 @@ head(surveys_wide)
 
 #Problem 2
 
+surveys<-read.csv("data/portal_data_joined.csv")
+summary(surveys$weight)
+?ifelse
+weights2<-surveys%>%filter(!is.na(weight))
+weights2$weight_cat<-ifelse(weights2$weight>=48.00,"large","small")
+head(weights2)
 
+
+#An attempt to do this with case_when only
+#surveys$weight_cat<-surveys%>%filter(!is.na(weight)%>%mutate(weight_cat=case_when(weight>=48.00~"large",weight > 20.00 && weight < 48.00 ~ "Medium",TRUE~"Small")))
 
 
 
