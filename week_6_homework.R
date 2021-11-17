@@ -7,3 +7,9 @@
 #
 #November 16, 2021
 #************************#
+
+library(tidyverse)
+gapminder <- read_csv("https://gge-ucd.github.io/R-DAVIS/data/gapminder.csv")
+head(gapminder)
+
+#Problem 1
