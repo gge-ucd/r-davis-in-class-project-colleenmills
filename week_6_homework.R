@@ -37,4 +37,18 @@ ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +
 #It turns out that scale_x_log10() does seem to log transform the x-axis.
 #geom_smooth creates what appears to be a best-fit line through the data points
 
+#Challenge
+
+#It was not very clear which code was supposed to be modified here.
+#Interesting how we have to use "pop" here when "population" is what comes up.
+
+ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +
+  geom_point(aes(color = continent, size=pop)) + 
+  scale_x_log10() +
+  geom_smooth(method = 'lm', color = 'black', linetype = 'dashed') +
+  theme_bw()
+
 #Problem 3
+
+
+
