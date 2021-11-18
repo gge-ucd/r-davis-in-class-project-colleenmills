@@ -37,14 +37,21 @@ head(surveys_wide)
 
 surveys<-read.csv("data/portal_data_joined.csv")
 summary(surveys$weight)
-?ifelse
-weights2<-surveys%>%filter(!is.na(weight))
-weights2$weight_cat<-ifelse(weights2$weight>=48.00,"large","small")
-head(weights2)
-
-
+surveys<-surveys%>%filter(!is.na(weight))
+summary_weight[[1]]
+summary_weight[[2]]
+summary_weight[[5]]
+summary_weight<-summary(surveys$weight)
+weight<-surveys$weight
+#Also, instructions were unclear of the fact that I need to fully do this with ifelse and then repeat with case_when
+surveys$weight_cat<-ifelse(surveys$weight<=summary_weight[[2]],"small",
+                                     ifelse(surveys$weight>summary_weight[[2]] 
+                                            & surveys$weight<summary_weight[[5]],"medium","large"))
+head(surveys)
+weights<-surveys%>%mutate(weight_cat=case_when(weight<=summary_weight[[2]]~"small",weight>summary_weight[[2]] & weight<summary_weight[[5]]~"medium",T~"large"))
+head(weights)
 #An attempt to do this with case_when only
-#surveys$weight_cat<-surveys%>%filter(!is.na(weight)%>%mutate(weight_cat=case_when(weight>=48.00~"large",weight > 20.00 && weight < 48.00 ~ "Medium",TRUE~"Small")))
+#surveys$weight_cat<-surveys%>%filter(!is.na(weight)%>%mutate(weight_cat=case_when(weight>=48.00~"large",weight > 20.00 && weight < 48.00 ~ "medium",weight)))
 
 
 
