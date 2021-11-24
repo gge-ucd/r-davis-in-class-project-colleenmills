@@ -50,5 +50,6 @@ ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +
 
 #Problem 3
 
-
+countries_vector<-()
+gapminder %>% filter(!is.na(lifeExp))
 
