@@ -49,7 +49,8 @@ ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +
   theme_bw()
 
 #Problem 3
-
-countries_vector<-()
-gapminder %>% filter(!is.na(lifeExp))
+gapminder[475,]
+countries_vector<-c("Brazil","China","El Salvador","Niger","United States")
+gapminder %>% filter(country %in% countries_vector) %>% ggplot(aes(x=country,y=lifeExp))+
+  geom_boxplot(alpha=0)+geom_jitter(alpha=1)
 
