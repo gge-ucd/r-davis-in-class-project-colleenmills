@@ -46,3 +46,5 @@ Amazing.plot<-Great.plot%>%filter(continent!="Oceania")%>%ggplot(aes(x=reorder(c
 Amazing.plot
 ?facet_wrap
 
+#still have questions about why this doesn't work when some parts are in a certain order.
+
