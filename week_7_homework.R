@@ -40,4 +40,9 @@ Europe.plot
 plot_panel<-plot_grid(Africa.plot,Americas.plot,Asia.plot,Europe.plot,nco1=2,nrow=2)
 plot_panel
 
+Amazing.plot<-Great.plot%>%filter(continent!="Oceania")%>%ggplot(aes(x=reorder(country,pop_diff),y=pop_diff))+
+    geom_col(aes(fill=continent))+facet_wrap(~continent,scales="free")+theme_bw()+
+  theme(axis.title.x=element_text("stuff"),axis.text.x=element_text(angle=45,vjust=1))
+Amazing.plot
+?facet_wrap
 
