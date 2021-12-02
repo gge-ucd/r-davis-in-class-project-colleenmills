@@ -31,4 +31,12 @@ library(lubridate)
 mloa <- read_csv("https://raw.githubusercontent.com/gge-ucd/R-DAVIS/master/data/mauna_loa_met_2001_minute.csv")
 
 head(mloa)
+mloa[60,]
+View(mloa)
 
+#Remove missing values in rel_humid, temp_C_2m, and windSpeed_m_s
+mloa2<-mloa%>%filter(rel_humid!=-99,temp_C_2m!=-999.99,windSpeed_m_s!=-999.9)
+head(mloa2)
+
+#Generate column called "datetime" using year, month, day, hour24, and min columns
+mloa3<-mloa2%>
