@@ -41,8 +41,8 @@ plot_panel<-plot_grid(Africa.plot,Americas.plot,Asia.plot,Europe.plot,nco1=2,nro
 plot_panel
 
 Amazing.plot<-Great.plot%>%filter(continent!="Oceania")%>%ggplot(aes(x=reorder(country,pop_diff),y=pop_diff))+
-    geom_col(aes(fill=continent))+facet_wrap(~continent,scales="free")+theme_bw()+
-  theme(axis.title.x=element_text("stuff"),axis.text.x=element_text(angle=45,vjust=1))
+    geom_col(aes(fill=continent))+facet_wrap(~continent,scales="free")+theme_bw()+scale_fill_viridis_d()+
+  theme(axis.text.x=element_text(angle=45,hjust=1),legend.position="none")+xlab("Country")+ylab("Change in Population Between 2002 and 2007")
 Amazing.plot
 ?facet_wrap
 
