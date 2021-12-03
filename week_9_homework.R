@@ -52,4 +52,8 @@ mloa2$datetimeLocal
 ?month()
 months<-month(mloa2$datetimeLocal)
 hours<-hour(mloa2$datetimeLocal)
-mloa2$meanMonthlyTempByHour<-mloa2%>%group_by(months)
+#mloa2$meanMonthlyTempByHour<-mloa2%>%group_by(months)
+mloa3<-mloa2%>%group_by(month(mloa2$datetimeLocal),hour(mloa2$datetimeLocal))%>%mutate(mean_temp=mean(temp_C_2m))
+head(mloa3)
+mloa3
+mloa2
